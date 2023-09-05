@@ -1,0 +1,77 @@
+
+{% include "header.html" %}
+<style>
+table.table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+table.table td, table.table th {
+        color: white;
+        padding: 8px;
+        text-align: left;
+    }
+
+   h3{
+    font-weight: normal;
+    color: white;
+    }
+.form-container div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.col-md-3 col-lg-3 col-xl-3{
+
+}
+
+</style>
+<!-- Page Header-->
+<header style="background-color: white">
+  <div class="container px-4 px-lg-5" style="width: 1250px; max-width: 100%; background-color: #0e2444">
+    <div class="row gx-4 gx-lg-5 justify-content-between" style="margin-top: 80px">
+      <div class="col-md-12 col-lg-10 col-xl-12" style="color: white; height: auto; padding-bottom:50px">
+          <h1 style="margin-top:30px">DNS lookup</h1>
+            <div class="form-container">
+              <form action="/dns_lookup" method="post">
+                  <div>
+                      <label for="domain_name" style="margin-right:70px">Domain name:</label>
+                      <input type="text" name="domain_name" id="domain_name" required><br><br>
+                  </div>
+                  <div>
+                      <label for="record" style="margin-right:20px">Select DNS record:</label>
+                      <select id="record" name="record">
+                            <option value="a">A record</option>
+                            <option value="ns">NS record</option>
+                            <option value="txt">TXT record</option>
+                            <option value="mx">MX record</option>
+                      </select><br>
+                  </div>
+                  <button type="submit">Submit</button>
+              </form>
+            </div>
+
+        {% if answer %}
+          <h1 style="margin-top:50px">Result:</h1>
+          {% if record =="txt" %}
+          <div  class="col-md-12 col-lg-12 col-xl-12" style="background-color: #1d2128; padding: 10px; margin-bottom:20px">
+              <h4>Record type: {{record}} </h4>
+              {% for record in answer %}
+                            <h4>{{ record }}</h4>
+              {% endfor %}
+          </div>
+          {% else %}
+          <div  class="col-md-8 col-lg-8 col-xl-12" style="background-color: #1d2128; padding: 10px; margin-bottom:20px">
+              <h4>Record type: {{record}} </h4>
+              {% for record in answer %}
+                            <h4>{{ record }}</h4>
+              {% endfor %}
+           {% endif %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+ {% include "middle.html" %}
+{% include "footer.html" %}

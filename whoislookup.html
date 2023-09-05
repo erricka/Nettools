@@ -1,0 +1,83 @@
+{% include "header.html" %}
+<style>
+  table.table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  table.table td, table.table th {
+    color: white;
+    padding: 8px;
+    text-align: left;
+  }
+
+  h3 {
+    font-weight: normal;
+    color: white;
+  }
+
+  .form-container div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+</style>
+<!-- Page Header-->
+<header style="background-color: white">
+  <div class="container px-4 px-lg-5" style="width: 1250px; max-width: 100%; background-color: #0e2444;">
+    <div class="row gx-4 gx-lg-5 justify-content-between" style="margin-top: 80px">
+      <div class="col-md-12 col-lg-10 col-xl-12" style="color: white; height: auto; padding-bottom:50px">
+        <h1 style="margin-top:30px">Whois Lookup</h1>
+        <div class="form-container">
+          <form action="/whoislookup" method="post">
+            <div>
+              <label for="domain" style="margin-right:10px">Domain name: </label>
+              <input type="text" id="domain" name="domain">
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+        {% if domain_profile %}
+        <h1 style="margin-top:50px">Result:</h1>
+          <div style="background-color: #1d2128; padding: 10px;">
+            {% for result in domain_profile %}
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>Registrar: </td>
+                  <td>{{ result.registrar.name }} <br> IANA ID: {{ result.registrar.iana_id }} <br> URL: {{ result.registrar.url }}</td>
+                </tr>
+                <tr>
+                  <td>Registrar Status: </td>
+                  <td>{{ result.registrar_status }}</td>
+                </tr>
+                <tr>
+                  <td>Dates: </td>
+                  <td>{{ result.dates[0] }} <br> {{ result.dates[1] }} <br> {{ result.dates[2] }}</td>
+                </tr>
+                <tr>
+                  <td>Name Servers: </td>
+                  <td>{{ result.name_servers[0] }} <br> {{ result.name_servers[1] }} <br> {{ result.name_servers[2] }}</td>
+                </tr>
+                <tr>
+                  <td>IP address: </td>
+                  <td>{{ result.ip_address }}</td>
+                </tr>
+                <tr>
+                  <td>IP location: </td>
+                  <td>{{ result.ip_location }}</td>
+                </tr>
+                <tr>
+                  <td>ASN: </td>
+                  <td>{{ result.ASN }}</td>
+                </tr>
+              </tbody>
+            </table>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</header>
+{% include "middle.html" %}
+{% include "footer.html" %}

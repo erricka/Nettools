@@ -1,0 +1,36 @@
+<style>
+.form-container div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+</style>
+{% include "header.html" %}
+<header style="background-color: white">
+  <div class="container position-relative px-4 px-lg-5" style="width: 1250px; max-width: 100%; background-color: #0e2444;">
+    <div class="row gx-4 gx-lg-5 justify-content-between" style="margin-top: 80px">
+      <div class="col-md-12 col-lg-10 col-xl-12" style="color: white; height: auto; padding-bottom:50px">
+          <h1 style="margin-top:30px">PTR tool Generator</h1>
+          <div class="form-container">
+              <form action="/ptr-generator" method="post">
+                <div>
+                  <label for="ip_address" style="margin-right:10px; font-weight:normal">IP Address:</label>
+                  <input type="text" name="ip_address" id="ip_address" required>
+                </div>
+                <div>
+                    <label for="prefix" style="margin-right:65px; font-weight:normal">Prefix:</label>
+                    <input type="text" name="prefix" id="prefix" required>
+                </div>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          {% if file_url %}
+            <a href="{{ file_url }}" style="color:white">Click on me to download your file.</a>
+          {% endif %}
+      </div>
+
+    </div>
+  </div>
+</header>
+  {% include "middle.html" %}
+{% include "footer.html" %}

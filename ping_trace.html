@@ -1,0 +1,101 @@
+
+{% include "header.html" %}
+<style>
+table.table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+table.table td, table.table th {
+        color: white;
+        padding: 8px;
+        text-align: left;
+    }
+
+   h3{
+    font-weight: normal;
+    color: white;
+    }
+.radio-group label {
+  display: inline-flex;
+  align-items: center;
+}
+.form-container div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.answer {
+        font-family: Arial;
+        font-size: 20px
+    }
+.result {
+        font-size: 23px;
+        font-family: Arial;
+        font-weight: bold;
+        font-style: italic;
+    }
+
+</style>
+<!-- Page Header-->
+<header style="background-color: white">
+  <div class="container px-4 px-lg-5" style="width: 1250px; max-width: 100%; background-color: #0e2444;">
+    <div class="row gx-4 gx-lg-5 justify-content-between" style="margin-top: 80px">
+      <div class="col-md-12 col-lg-10 col-xl-12" style="color: white; height: auto; padding-bottom:50px">
+          <h1 style="margin-top:30px">Ping and Traceroute</h1>
+            <div class="form-container">
+              <form action="/ping-trace" method="post">
+                <fieldset>
+                  <div class="radio-group">
+                     <label id="option"> Option: </label>
+                    <label for="ping"><input type="radio" id="ping" name="function" value="ping" style="transform: scale(1.5); margin-right:10px"> Ping</label>
+                    <label for="traceroute"><input type="radio" id="traceroute" name="function" value="traceroute" style="transform: scale(1.5); margin-right:10px; margin-left: 10px"> Traceroute</label>
+                  </div>
+                </fieldset>
+                <div>
+                  <label for="isp" id="select">ISP:</label>
+                  <select id="isp" name="isp">
+                    <option value="isp1">MaxBit</option>
+                    <option value="isp2">ISP 2</option>
+                    <option value="isp3">ISP 3</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="input" id="host">IP adddress: </label>
+                  <input type="text" id="input" name="host">
+                </div>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+
+        {% if answer %}
+        <h1 style="margin-top:50px">Result:</h1>
+            {% if function == "ping" %}
+          <div  class="col-md-8 col-lg-8 col-xl-12" style="background-color: #1d2128; padding: 10px;">
+                {% for result in answer %}
+                  <label class="answer"> Address</label> <br>
+                  <label class="result">{{ result.address }}</label><br>
+                  <label class="answer"> IP Address</label><br>
+                  <label class="result">{{ result.IP}}</label><br>
+                  <label class="answer"> Status</label><br>
+                  <label class="result"> {{result.status}}</label><br>
+                  <label class="answer"> Packet Loss</label><br>
+                  <label class="result">{{result.packet}}</label><br>
+                  <label class="answer"> Response Time</label><br>
+                  <label class="result"> {{result.time}}</label><br>
+                {% endfor %}
+          </div>
+            {%else %}
+          <div style="background-color: #1d2128; padding: 10px;">
+                <table class="table"  style="color: white;">
+                            {{ answer|safe }}
+                </table>
+          </div>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% include "middle.html" %}
+{% include "footer.html" %}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    h3{
+    font-size:23px;
+    font-weight:normal;
+    margin-top: 10px;
+    color: white;
+    }
+</style>
+<body>
+  <div class="container px-4 px-lg-5" style="width: 1250px; max-width: 100%; background-color: #0e2444;">
+    <div class="row gx-4 gx-lg-5 justify-content-between">
+      <div class="col-md-12 col-lg-10 col-xl-12" style="color: white; height: auto; padding-bottom:50px">
+          <h1>Network Tools</h1>
+           <div class="row" style="margin-top:20px">
+              <div class="col-md-3 col-lg-3 col-xl-2" style="display: flex; flex-direction: column; justify-content: center; align-items: center; border:1px solid white; margin-right: 29px; padding: 17px; margin-left:15px">
+                      <a href="{{ url_for('ping_trace') }}" style="text-align: center;">
+                            <img src="static/assets/img/ping.png" style="width: 150px; height: 130px;">
+                            <h3> Ping and Traceroute</h3>
+                      </a>
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-2" style="display: flex; flex-direction: column; justify-content: center; align-items: center; border:1px solid white;  margin-right:29px; padding:15px;">
+                      <a href="{{ url_for('address_list') }}" style="text-align: center;">
+                          <img src="static/assets/img/address-book.png" style="width: 150px; height: 130px">
+                          <h3>Address-list</h3>
+                      </a>
+              </div>
+
+              <div class="col-md-3 col-lg-3 col-xl-2" style="display: flex; flex-direction: column; justify-content: center; align-items: center; border:1px solid white; margin-right:29px; padding:15px;">
+                      <a href="{{ url_for('dns_lookup') }}" style="text-align: center;">
+                          <img src="static/assets/img/dns.png" style="width: 150px; height: 130px;">
+                          <h3>DNS lookup</h3>
+                      </a>
+              </div>
+               <div class="col-md-3 col-lg-3 col-xl-2" style="display: flex; flex-direction: column; justify-content: center; align-items: center; border:1px solid white;; padding:15px; margin-right:29px">
+                      <a href="{{ url_for('dns_lookup') }}" style="text-align: center;">
+                          <img src="static/assets/img/ptr.png" style="width: 150px; height: 130px;">
+                          <h3 >PTR Generator</h3>
+                      </a>
+              </div>
+               <div class="col-md-3 col-lg-3 col-xl-2" style="display: flex; flex-direction: column; justify-content: center; align-items: center; border:1px solid white;  padding:15px; margin-right:29px">
+                      <a href="{{ url_for('dns_lookup') }}" style="text-align: center;">
+                          <img src="static/assets/img/ptr.png" style="width: 150px; height: 130px;">
+                          <h3 >PTR Generator</h3>
+                      </a>
+              </div>
+           </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

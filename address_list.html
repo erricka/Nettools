@@ -1,0 +1,40 @@
+<style>
+.form-container div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+</style>
+{% include "header.html" %}
+<header style="background-color: white">
+  <div class="container position-relative px-4 px-lg-5" style="width: 1250px; max-width: 100%; background-color: #0e2444;">
+    <div class="row gx-4 gx-lg-5 justify-content-between" style="margin-top: 80px">
+      <div class="col-md-12 col-lg-10 col-xl-12" style="color: white; height: auto; padding-bottom:50px">
+          <h1 style="margin-top:30px">Address list Generator</h1>
+          <div class="form-container">
+              <form action="/address_list" method="post">
+                <div>
+                  <label for="list" style="margin-right:20px; font-weight:normal">List name:  </label>
+                  <input type="text" id="list" name="list">
+                </div>
+                <div>
+                    <label for="data" style="margin-right:28px; font-weight:normal">Full infos:</label>
+                    <textarea id="data" name="data" style="resize: both;"></textarea>
+                </div>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          {% if answer %}
+          <h3>Result: </h3>
+                <div  class="col-md-8 col-lg-8 col-xl-12" style="background-color: #1d2128; padding: 10px; margin-bottom:20px">
+                        {% for ip in answer %}
+                        <h4>{{ ip }}</h4>
+                        {% endfor %}
+                </div>
+          {% endif %}
+      </div>
+    </div>
+  </div>
+</header>
+{% include "middle.html" %}
+{% include "footer.html" %}

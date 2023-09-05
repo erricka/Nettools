@@ -1,0 +1,25 @@
+{% include "header.html" %}
+<style>
+   h3{
+    font-weight: normal;
+    color: white;
+    }
+
+</style>
+<!-- Page Header-->
+<header style="background-color: white">
+  <div class="container position-relative px-4 px-lg-5" style="width: 1250px; max-width: 100%; background-color: #0e2444">
+    <div class="row gx-4 gx-lg-5 justify-content-between" style="margin-top: 80px">
+      <div class="col-md-12 col-lg-10 col-xl-9" style="color: white; height: auto; padding-bottom:100px">
+          <h1 style="margin-top:30px">What is my IP</h1>
+          <h3 >IPV4 address: {{result["ip"]}}</h3>
+          <h3>IP Location: {{result["city"]}}, {{result["country"]}}</h3>
+          <h3>ISP: {{result["ISP"]}} </h3>
+        </div>
+      </div>
+    </div>
+    {% include "middle.html" %}
+  </div>
+</header>
+
+{% include "footer.html" %}
